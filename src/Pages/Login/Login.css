@@ -1,0 +1,105 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f562aaf4-5dbb-4603-a32b-6ef6c2230136/dh0w8qv-9d8ee6b2-b41a-4681-ab9b-8a227560dc75.jpg/v1/fill/w_1192,h_670,q_70,strp/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZjU2MmFhZjQtNWRiYi00NjAzLWEzMmItNmVmNmMyMjMwMTM2XC9kaDB3OHF2LTlkOGVlNmIyLWI0MWEtNDY4MS1hYjliLThhMjI3NTYwZGM3NS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.LOYKSxIDqfPwWHR0SSJ-ugGQ6bECF0yO6Cmc0F26CQs");
+  color: #fff;
+}
+
+.login-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  z-index: 1;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 60px 68px 40px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 24px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-input::placeholder {
+  color: #aaa;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 20px;
+  background-color: #e50914;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #f40612;
+}
+
+.login-help {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #b3b3b3;
+}
+
+.login-help a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.login-footer {
+  margin-top: 20px;
+  color: #737373;
+}
+
+.login-footer p {
+  margin-bottom: 0;
+}
+
+.login-footer .link {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-footer .link:hover {
+  text-decoration: none;
+}
+
+.login-captcha-notice {
+  font-size: 13px;
+  color: #8c8c8c;
+  margin-top: 20px;
+}
+
+.login-captcha-notice a {
+  color: #0071eb;
+  text-decoration: none;
+}

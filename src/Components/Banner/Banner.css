@@ -1,0 +1,100 @@
+/* Banner.css */
+
+/* Main banner container */
+.banner {
+    position: relative;
+  height: 448px;
+  color: white;
+  object-fit: contain;
+  background-size: cover;
+  background-position: center center;
+  padding: 20px;
+  margin-top:0px; 
+}
+
+/* Banner content */
+.banner-contents {
+    padding: 60px 30px;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+/* Banner title */
+.banner-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Banner description */
+.banner-description {
+    max-width: 500px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+/* Banner buttons */
+.banner-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.banner-button {
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin-right: 10px;
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
+.banner-button:hover {
+    color: black;
+    background-color: #e6e6e6;
+    transition: all 0.2s;
+}
+
+/* Fade effect at the bottom */
+.banner-fadeBottom {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(37, 37, 37, 0.61),
+        #111
+    );
+    left: 0;
+}
+.icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.banner-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin-right: 10px;
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
+.banner-button:hover {
+    color: black;
+    background-color: #e6e6e6;
+    transition: all 0.2s;
+}

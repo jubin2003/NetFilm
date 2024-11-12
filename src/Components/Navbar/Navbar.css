@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Apply the font globally */
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease-in-out; /* Smooth transition */
+    background-color: rgba(59, 59, 59, 0.7); /* Transparent by default */
+    z-index: 10;
+}
+
+.navbar.scrolled {
+    background-color: black; /* Solid black on scroll */
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links li {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.navbar-links li:hover {
+    color: #b3b3b3;
+}
+
+/* Profile icon and dropdown */
+.navbar-right {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-icon {
+    width: 35px;
+    border-radius: 4px;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #141414;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #e5e5e5;
+    font-size: 14px;
+    display: none; /* Initially hidden */
+}
+
+.dropdown-menu p {
+    margin: 0;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.dropdown-menu p:hover {
+    color: white;
+    background-color: #6d6d6d;
+    border-radius: 4px;
+}
+
+/* Show dropdown on hover */
+.navbar-right:hover .dropdown-menu {
+    display: block;
+}
