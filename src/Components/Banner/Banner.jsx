@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfoCircle ,faTimes} from '@fortawesome/free-solid-svg-icons';
 import './Banner.css';
 
 const token = import.meta.env.VITE_TOKEN;
@@ -60,7 +60,10 @@ function Banner() {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 4000); // Hide toast after 3 seconds
   };
-
+  const closeTrailer = () => {
+    setTrailerUrl(null); // This will hide the trailer modal
+  };
+  
   return (
     <div
       className="banner"
@@ -87,6 +90,26 @@ function Banner() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Trailer Video */}
+      {trailerUrl && (
+       <div className="trailer-modal">
+       <div className="trailer-content">
+         <button className="close-button" onClick={closeTrailer}>
+           <FontAwesomeIcon icon={faTimes} className="close-icon" />
+         </button>
+         <div className="iframe-container">
+           <iframe
+             src={trailerUrl}
+             frameBorder="0"
+             allow="autoplay; encrypted-media"
+             allowFullScreen
+             title="Trailer"
+           ></iframe>
+         </div>
+       </div>
+     </div>
       )}
 
       {/* Toast Notification */}

@@ -50,6 +50,8 @@ body {
 
 /* Profile Icon and Dropdown */
 .navbar-right {
+    display: flex;
+    align-items: center;
     position: relative;
     cursor: pointer;
 }
@@ -107,6 +109,7 @@ body {
         display: none;
     }
 
+    /* Toggle button for mobile menu */
     .menu-icon {
         display: block;
         font-size: 24px;
@@ -114,6 +117,7 @@ body {
         cursor: pointer;
     }
 
+    /* Mobile menu */
     .navbar-links.show {
         display: flex;
         flex-direction: column;
@@ -130,14 +134,25 @@ body {
 
 @media (max-width: 480px) {
     .navbar {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         padding: 8px 10px;
     }
 
-    .navbar-left,
+    .navbar-left {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        height: 25px;
+    }
+
     .navbar-right {
-        width: 100%;
-        justify-content: space-between;
+        display: flex;
+        align-items: center;
     }
 
     .profile-icon {
@@ -145,7 +160,14 @@ body {
     }
 
     .dropdown-menu {
-        width: 130px;
+    
         right: 0;
+        padding: 10px;
+        width: 200px;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        width: 100%;
     }
 }

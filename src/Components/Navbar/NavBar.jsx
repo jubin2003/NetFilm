@@ -39,7 +39,7 @@ function NavBar() {
           className="profile-icon"
         />
         <div className="dropdown-menu">
-          <p onClick={()=>{logout()}}>Sign Out from Netflix</p>
+          <p onClick={()=>{logout()}}>Sign Out from Netflix Account</p>
         </div>
       </div>
     </div>
