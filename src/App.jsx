@@ -6,7 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import{auth} from './firebase.js'
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const navigate =useNavigate();
   useEffect(()=>{
@@ -22,7 +23,7 @@ function App() {
     })
   },[])
   return (
-    <>
+    <> <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

@@ -4,9 +4,11 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Firebase configuration using environment variables (with VITE_ prefix)
 const firebaseConfig = {
@@ -15,7 +17,7 @@ const firebaseConfig = {
   projectId: import.meta.env.VITE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_ID
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
@@ -31,25 +33,34 @@ const signup = async (name, email, password) => {
       uid: user.uid,
       name,
       authProvider: "local",
-      email
+      email,
     });
+    toast.success("Account created successfully!");
   } catch (error) {
     console.log(error);
-    alert(error.message);
+    toast.error(`Sign-up failed: ${error.message}`);
   }
 };
 
 const login = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    toast.success("Logged in successfully!");
   } catch (err) {
     console.log(err);
+    toast.error(`Login failed: ${err.message}`);
   }
 };
 
 const logout = async (navigate) => {
-  await signOut(auth);
-  navigate("/login"); // Redirect to login page after logout
+  try {
+    await signOut(auth);
+    toast.success("Logged out successfully!");
+    navigate("/login"); // Redirect to login page after logout
+  } catch (err) {
+    console.log(err);
+  //  toast.error("Logout failed");
+  }
 };
 
 export { auth, db, login, signup, logout };

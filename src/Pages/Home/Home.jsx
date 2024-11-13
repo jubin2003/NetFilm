@@ -11,9 +11,9 @@ function Home() {
     <div className='home'>
         <NavBar/>
         <Banner/>
-        <TitleCard title={"Now_Playing"} category={"now_playing"} />
-        <TitleCard title={"Top_Rated"} category={"top_rated"}/>
         <TitleCard title={"Popular"} category={"popular"}  />
+        <TitleCard title={"Now Playing"} category={"now_playing"} />
+        <TitleCard title={"Top Rated"} category={"top_rated"}/>
         <TitleCard title={"Top Pics for You"} category={"upcoming"} />
         <Footer/>
     </div>
