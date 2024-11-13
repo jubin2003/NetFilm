@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import './Banner.css';
 
 const token = import.meta.env.VITE_TOKEN;
@@ -9,96 +9,99 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-  Authorization: `Bearer ${token}`
-  }
+    Authorization: `Bearer ${token}`,
+  },
 };
 
 function Banner() {
   const [movies, setMovies] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [trailerUrl, setTrailerUrl] = useState(null);
-  const random = Math.floor(Math.random() * 10)+1;
+  const [showToast, setShowToast] = useState(false);
+
+  const random = Math.floor(Math.random() * 10) + 1;
+
   // Fetch upcoming movies
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${random}`, options)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setMovies(data.results);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }, []);
 
   // Move to the next movie in the slider
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
-    }, 4000); // Change movie every 4 seconds
+    }, 5000); // Change movie every 4 seconds
     return () => clearInterval(interval);
   }, [movies.length]);
 
-  // Fetch and set trailer URL
+  // Check if there are any movies and get the current movie
+  const currentMovie = movies.length > 0 ? movies[currentIndex] : null;
+
+  // Play trailer
   const playTrailer = (movie) => {
     fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`, options)
-      .then(res => res.json())
-      .then(data => {
-        const trailer = data.results.find(vid => vid.type === "Trailer");
+      .then((res) => res.json())
+      .then((data) => {
+        const trailer = data.results.find((vid) => vid.type === 'Trailer');
         if (trailer) {
           setTrailerUrl(`https://www.youtube.com/embed/${trailer.key}?autoplay=1&controls=1`);
-        } else {
-          console.info(`No trailer found for "${movie.title}".`);
         }
       })
-      .catch(err => console.error('Failed to load trailer:', err));
+      .catch((err) => console.error('Failed to load trailer:', err));
   };
 
-  // Close trailer modal
-  const closeTrailer = () => {
-    setTrailerUrl(null);
+  // Show toast with movie info
+  const showMoreInfoToast = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 4000); // Hide toast after 3 seconds
   };
-
-  if (!movies || movies.length === 0) {
-    return <div>Loading...</div>;
-  }
-
-  const currentMovie = movies[currentIndex];
 
   return (
     <div
       className="banner"
-      style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}')` }}
+      style={{
+        backgroundImage: currentMovie && currentMovie.backdrop_path
+          ? `url('https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}')`
+          : 'none',
+      }}
     >
-      <div className="banner-contents">
-        <h1 className="banner-title">{currentMovie.title}</h1>
-        <p className="banner-description">
-          {currentMovie.overview ? currentMovie.overview.substring(0, 150) + '...' : 'No description available'}
-        </p>
-        <div className="banner-buttons">
-          <button className="banner-button" onClick={() => playTrailer(currentMovie)}>
-            <FontAwesomeIcon icon={faPlay} className="icon" /> Play
-          </button>
-          <button className="banner-button">
-            <FontAwesomeIcon icon={faInfoCircle} className="icon" /> More Info
-          </button>
-        </div>
-      </div>
-      <div className="banner-fadeBottom"></div>
-
-      {/* Trailer Modal */}
-      {trailerUrl && (
-        <div className="trailer-modal">
-          <div className="trailer-content">
-          <button className="close-button" onClick={closeTrailer}>
-              <FontAwesomeIcon icon={faTimes} className="close-icon" />
+      {currentMovie && (
+        <div className="banner-contents">
+          <h1 className="banner-title">{currentMovie.title}</h1>
+          <p className="banner-description">
+            {currentMovie.overview
+              ? currentMovie.overview.substring(0, 150) + '...'
+              : 'No description available'}
+          </p>
+          <div className="banner-buttons">
+            <button className="banner-button" onClick={() => playTrailer(currentMovie)}>
+              <FontAwesomeIcon icon={faPlay} className="icon" /> Play
             </button>
-            <iframe
-              width="100%"
-              height="100%"
-              src={trailerUrl}
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="Trailer"
-            ></iframe>
+            <button className="banner-button" onClick={showMoreInfoToast}>
+              <FontAwesomeIcon icon={faInfoCircle} className="icon" /> More Info
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Toast Notification */}
+      {showToast && currentMovie && (
+        <div className="card toast-card">
+          <img
+            src={`https://image.tmdb.org/t/p/w200${currentMovie.poster_path}`}
+            alt={currentMovie.title}
+            className="toast-image"
+          />
+          <div className="toast-content">
+            <h3 className="toast-title">{currentMovie.title}</h3>
+            <p className="toast-description">
+              {currentMovie.overview ? currentMovie.overview.substring(0, 60) + '...' : 'No description available'}
+            </p>
           </div>
         </div>
       )}
