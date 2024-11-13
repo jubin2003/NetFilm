@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { login, signup } from "../../firebase";
 
 function Login() {
   const [signInState, setSignInState] = useState("Sign In");
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+const user_auth = async (event)=>{
+  event.preventDefault();
+  if(signInState==='Sign In'){
+    await login(email,password)
+  }else{
+    await signup(name,email,password)
+  }
+}
   return (
     <div className="login">
       <img
@@ -17,11 +28,29 @@ function Login() {
 
         <form>
           {signInState === "Sign Up" && (
-            <input type="text" placeholder="Enter Your Name" className="login-input" />
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              placeholder="Enter Your Name"
+              className="login-input"
+            />
           )}
-          <input type="email" placeholder="Email or phone number" className="login-input" />
-          <input type="password" placeholder="Password" className="login-input" />
-          <button type="submit" className="login-button">
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Email or phone number"
+            className="login-input"
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Password"
+            className="login-input"
+          />
+          <button onClick={user_auth}type="submit" className="login-button">
             {signInState}
           </button>
 

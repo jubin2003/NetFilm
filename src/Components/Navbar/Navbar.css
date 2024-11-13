@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* Apply the font globally */
+/* Global Styles */
 body {
     font-family: 'Bebas Neue', sans-serif;
     color: white;
@@ -14,13 +14,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
-    background-color: rgba(59, 59, 59, 0.7); /* Transparent by default */
+    transition: background-color 0.3s ease-in-out;
+    background-color: rgba(59, 59, 59, 0.7);
     z-index: 10;
 }
 
 .navbar.scrolled {
-    background-color: black; /* Solid black on scroll */
+    background-color: black;
 }
 
 .navbar-left {
@@ -48,7 +48,7 @@ body {
     color: #b3b3b3;
 }
 
-/* Profile icon and dropdown */
+/* Profile Icon and Dropdown */
 .navbar-right {
     position: relative;
     cursor: pointer;
@@ -59,7 +59,7 @@ body {
     border-radius: 4px;
 }
 
-/* Dropdown menu styling */
+/* Dropdown Menu Styling */
 .dropdown-menu {
     position: absolute;
     right: 0;
@@ -72,7 +72,7 @@ body {
     text-align: center;
     color: #e5e5e5;
     font-size: 14px;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 .dropdown-menu p {
@@ -90,4 +90,62 @@ body {
 /* Show dropdown on hover */
 .navbar-right:hover .dropdown-menu {
     display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        height: 25px;
+        margin-right: 10px;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .navbar-links.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(59, 59, 59, 0.9);
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        gap: 15px;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 8px 10px;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .profile-icon {
+        width: 30px;
+    }
+
+    .dropdown-menu {
+        width: 130px;
+        right: 0;
+    }
 }

@@ -1,5 +1,3 @@
-/* Titlecard.css */
-
 .title-cards {
   margin-top: 50px;
   margin-bottom: 30px;
@@ -17,7 +15,7 @@
   display: flex;
   gap: 10px;
   overflow-x: scroll;
-  scroll-behavior: smooth; /* Smooth scrolling effect */
+  scroll-behavior: smooth;
   padding: 10px;
 }
 
@@ -78,5 +76,22 @@
 
 .card_list .card:hover h4,
 .card_list .card:hover p {
+  opacity: 1;
+}
+
+/* Styling for No Poster Image */
+.card_list .card img.no-poster {
+  filter: grayscale(50%);
+  height: 135px;
+  object-fit: cover; /* Ensures it fits well without cropping */
+  opacity: 0.8;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card_list .card:hover img.no-poster {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   opacity: 1;
 }

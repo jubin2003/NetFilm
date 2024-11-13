@@ -5,13 +5,13 @@
   max-width: 100%;
   margin: 0 auto;
   background-color: black;
-  overflow: hidden;
+  overflow: hidden;  /* Prevents overflow outside the container */
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
 /* Video Styling */
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  pointer-events: none; /* Ensure video controls are accessible */
+  pointer-events: auto;  /* Ensure the controls are clickable */
 }
 
 /* Dark Overlay */
@@ -29,13 +29,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));
+  color: white;
+  z-index: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Information should be at the bottom */
-  padding: 20px;
-  color: white;
-  z-index: 10;
+  justify-content: space-between;
 }
 
 /* Back Button */
@@ -58,20 +57,21 @@
 
 /* Trailer Info Styling */
 .player-info {
-  text-align: left;
-  margin-top: 10px;
-  
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
 }
 
 .player-info .title {
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 1.5em;
+  font-weight: lighter;
   margin: 0;
 }
 
 .player-info .publish-date,
 .player-info .type {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #b3b3b3;
   margin: 5px 0;
 }
@@ -79,12 +79,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .player-info .title {
-    font-size: 1.5em;
-  }
-
-  .player-info .publish-date,
-  .player-info .type {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
   .back-button {
@@ -92,4 +87,33 @@
     top: 10px;
     left: 10px;
   }
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+.popIn {
+  animation: popIn 0.3s ease-out forwards;
+}
+
+.popOut {
+  animation: popOut 0.3s ease-in forwards;
 }

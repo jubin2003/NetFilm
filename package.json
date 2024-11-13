@@ -14,11 +14,16 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "animate.css": "^4.1.1",
+    "firebase": "^11.0.1",
     "mdb-react-ui-kit": "^9.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-firebase-hooks": "^5.1.1",
     "react-player": "^2.16.0",
-    "react-router-dom": "^6.28.0"
+    "react-router-dom": "^6.28.0",
+    "react-toastify": "^10.0.6",
+    "sweetalert2": "^11.14.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import { logout } from '../../firebase';
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +39,7 @@ function NavBar() {
           className="profile-icon"
         />
         <div className="dropdown-menu">
-          <p>Sign Out from Netflix</p>
+          <p onClick={()=>{logout()}}>Sign Out from Netflix</p>
         </div>
       </div>
     </div>

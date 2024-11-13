@@ -1,15 +1,13 @@
-/* Banner.css */
-
 /* Main banner container */
 .banner {
     position: relative;
-  height: 448px;
-  color: white;
-  object-fit: contain;
-  background-size: cover;
-  background-position: center center;
-  padding: 20px;
-  margin-top:0px; 
+    height: 448px;
+    color: white;
+    background-size: cover;
+    background-position: center center;
+    padding: 20px;
+    margin-top: 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Adding shadow for depth */
 }
 
 /* Banner content */
@@ -98,3 +96,54 @@
     background-color: #e6e6e6;
     transition: all 0.2s;
 }
+/* Trailer modal */
+.trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.trailer-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Adjust icon size */
+  .close-icon {
+    font-size: 1.5rem;
+  }

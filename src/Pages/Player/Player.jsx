@@ -66,14 +66,17 @@ function Player() {
           <p className="type">Type: {trailer.type}</p>
         </div>
       </div>
-      <iframe
-        title="Netflix-like Trailer Player"
+      <iframe 
         className="video"
-        src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=${isPlaying ? 0 : 1}&controls=1`}
-        frameBorder="0"
-        allow="autoplay; fullscreen; encrypted-media"
-        allowFullScreen
-      ></iframe>
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=${isPlaying ? 1 : 0}&controls=1`}
+              frameBorder="0"
+               allow="autoplay; fullscreen; encrypted-media"
+              allowFullScreen
+              title="Trailer"
+            ></iframe>
+     
     </div>
   );
 }
