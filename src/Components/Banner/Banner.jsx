@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Banner.css';
 
+const token = import.meta.env.VITE_TOKEN;
+
 const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNjA0ZWRjZWFhMTk3ZTMxZGFmMTI3YzczYzU3ZDUxMyIsIm5iZiI6MTczMTQ2MDc5My4zMjk0MjgsInN1YiI6IjY3MzE5MDgzNzIyMWM0MTJhNmFmOGNkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uoe0MviUE6ToUDRW63YPTsNabIQXQ0JUaL94tEYmWaM'
+  Authorization: `Bearer ${token}`
   }
 };
 
@@ -15,10 +17,10 @@ function Banner() {
   const [movies, setMovies] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [trailerUrl, setTrailerUrl] = useState(null);
-
+  const random = Math.floor(Math.random() * 10)+1;
   // Fetch upcoming movies
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options)
+    fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${random}`, options)
       .then(res => res.json())
       .then(data => {
         setMovies(data.results);
@@ -30,7 +32,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
-    }, 5000); // Change movie every 5 seconds
+    }, 4000); // Change movie every 4 seconds
     return () => clearInterval(interval);
   }, [movies.length]);
 

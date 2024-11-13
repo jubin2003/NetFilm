@@ -3,24 +3,24 @@ import "./Titlecard.css";
 import { Link } from "react-router-dom";
 
 function TitleCard({ title, category }) {
-  const [movies, setMovies] = useState([]);
+  const token = import.meta.env.VITE_TOKEN;
+    const [movies, setMovies] = useState([]);
   const cardsRef = useRef();
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNjA0ZWRjZWFhMTk3ZTMxZGFmMTI3YzczYzU3ZDUxMyIsIm5iZiI6MTczMTMwMzE5MC4wOTM2NDI3LCJzdWIiOiI2NzMxOTA4MzcyMjFjNDEyYTZhZjhjZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.uuY-Tzw9eiuiMFcjwtn5nfKDKSylgPaVRgefSjYi7f8",
-    },
+      Authorization: `Bearer ${token}`,    },
   };
 
   const handleWheel = (e) => {
     e.preventDefault();
     cardsRef.current.scrollLeft += e.deltaY * 2.5;
   };
-
+  const random = Math.floor(Math.random() * 30)+1;
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${category || "now_playing"}?language=en-US&page=2`,
+      `https://api.themoviedb.org/3/movie/${category || "now_playing"}?language=en-US&page=${random}`,
       options
     )
       .then((res) => res.json())
@@ -49,8 +49,11 @@ function TitleCard({ title, category }) {
                 alt={card.original_title}
               />
             ) : (
-              <div className="placeholder">Image Not Available</div>
-            )}
+<img
+                src="https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_1000.jpg"
+                alt="Default movie poster"
+                className="default-poster"
+              />            )}
             <h4>{card.original_title}</h4>
           </Link>
         ))}

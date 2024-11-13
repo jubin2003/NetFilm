@@ -8,13 +8,14 @@ import {
 } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
+// Firebase configuration using environment variables (with VITE_ prefix)
 const firebaseConfig = {
-  apiKey: "AIzaSyDv4MER1TyX_GPsHCwZzWnJDix1RAwiMZ8",
-  authDomain: "netflix-clone-8cbf9.firebaseapp.com",
-  projectId: "netflix-clone-8cbf9",
-  storageBucket: "netflix-clone-8cbf9.appspot.com",
-  messagingSenderId: "486402509496",
-  appId: "1:486402509496:web:6bf395696509db44ec424d"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase

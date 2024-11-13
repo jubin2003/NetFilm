@@ -12,13 +12,12 @@ function Player() {
   });
   const { id } = useParams();
   const [fetchError, setFetchError] = useState(false);
-
+  const token = import.meta.env.VITE_TOKEN;
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNjA0ZWRjZWFhMTk3ZTMxZGFmMTI3YzczYzU3ZDUxMyIsIm5iZiI6MTczMTM4NTExNC4wMjI3ODk3LCJzdWIiOiI2NzMxOTA4MzcyMjFjNDEyYTZhZjhjZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.v_ElMLVXRYc_G_-3dU5BYJqTSo6_lcfNaVkx912VHqA",
+       Authorization: `Bearer ${token}`,
     },
   };
 

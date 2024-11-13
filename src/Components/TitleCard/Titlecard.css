@@ -95,3 +95,8 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   opacity: 1;
 }
+.card img.default-poster {
+  filter: brightness(1);
+  opacity: 0.8;
+  height: 8.5em;
+}

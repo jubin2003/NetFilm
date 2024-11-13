@@ -58,7 +58,7 @@ const user_auth = async (event)=>{
             <label>
               <input type="checkbox" /> Remember me
             </label>
-            <a href="/help">Need help?</a>
+            <a href="/login">Need help?</a>
           </div>
         </form>
 
@@ -74,7 +74,7 @@ const user_auth = async (event)=>{
           )}
           <p className="login-captcha-notice">
             This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <a href="/learn-more">Learn more.</a>
+            bot. <a href="/login">Learn more.</a>
           </p>
         </div>
       </div>
