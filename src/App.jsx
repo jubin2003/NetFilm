@@ -34,4 +34,3 @@ function App() {
 }
 
 export default App;
-// Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNjA0ZWRjZWFhMTk3ZTMxZGFmMTI3YzczYzU3ZDUxMyIsIm5iZiI6MTczMTMwMzE5MC4wOTM2NDI3LCJzdWIiOiI2NzMxOTA4MzcyMjFjNDEyYTZhZjhjZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.uuY-Tzw9eiuiMFcjwtn5nfKDKSylgPaVRgefSjYi7f8
